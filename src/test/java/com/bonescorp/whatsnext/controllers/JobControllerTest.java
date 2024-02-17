@@ -13,6 +13,7 @@ import org.springframework.data.domain.PageImpl;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -29,6 +30,20 @@ public class JobControllerTest {
         Page<Job> jobsMock = new PageImpl<>(List.of(createDefaultJob()));
         when(jobService.getJobs()).thenReturn(jobsMock);
         assertEquals("My Test Job" , jobController.getJobs().stream().findFirst().get().getDescription());
+    }
+
+    @Test
+    public void whenNewJob_verifyJobSaved() {
+        Job jobMock = Job.builder().build();
+        jobController.create(jobMock);
+        verify(jobService).insertJob(jobMock);
+    }
+
+    @Test
+    public void whenNewJob_verifyJobUpdated() {
+        Job jobMock = Job.builder().build();
+        jobController.update(jobMock);
+        verify(jobService).updateJob(jobMock);
     }
 
     private Job createDefaultJob() {

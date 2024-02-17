@@ -5,4 +5,8 @@ import org.springframework.data.domain.Page;
 
 public interface JobService {
      Page<Job> getJobs();
+
+     void insertJob(Job job);
+
+     void updateJob(Job job);
 }

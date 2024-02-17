@@ -15,7 +15,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class JobServiceTest {
@@ -31,6 +31,20 @@ public class JobServiceTest {
         Page<Job> jobsMock = new PageImpl<>(List.of(createDefaultJob()));
         when(jobRepository.findAll(any(Pageable.class))).thenReturn(jobsMock);
         assertEquals("My Test Job" ,jobService.getJobs().get().findFirst().get().getDescription());
+    }
+
+    @Test
+    public void givenNewJob_saveJob() {
+        Job jobMock = Job.builder().build();
+        jobService.insertJob(jobMock);
+        verify(jobRepository).insert(jobMock);
+    }
+
+    @Test
+    public void givenExistingJob_updateJob() {
+        Job jobMock = Job.builder().build();
+        jobService.updateJob(jobMock);
+        verify(jobRepository).save(jobMock);
     }
 
     private Job createDefaultJob() {
