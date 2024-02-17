@@ -28,7 +28,7 @@ public class JobControllerTest {
     public void whenJobsExist_andGetJobs_returnAllJobs() {
         Page<Job> jobsMock = new PageImpl<>(List.of(createDefaultJob()));
         when(jobService.getJobs()).thenReturn(jobsMock);
-        assertEquals("My Test Job" , jobController.getJobs().getBody().stream().findFirst().get().getDescription());
+        assertEquals("My Test Job" , jobController.getJobs().stream().findFirst().get().getDescription());
     }
 
     private Job createDefaultJob() {
