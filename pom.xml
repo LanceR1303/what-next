@@ -80,6 +80,20 @@
 			<artifactId>mockito-core</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.6.0</version>
+		</dependency>
+
+
 	</dependencies>
 
 	<build>
@@ -105,7 +119,7 @@
 					<user>sa</user>
 					<password>password</password>
 					<schemas>
-						<schema>WHATS_NEXT</schema>
+						<schema>WHAT_NEXT</schema>
 					</schemas>
 				</configuration>
 			</plugin>

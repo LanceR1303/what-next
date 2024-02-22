@@ -17,5 +17,5 @@ COPY --from=extracter /workspace/app/dependencies/ ./
 COPY --from=extracter /workspace/app/spring-boot-loader/ ./
 COPY --from=extracter /workspace/app/snapshot-dependencies/ ./
 COPY --from=extracter /workspace/app/application ./
-EXPOSE 8080
 ENTRYPOINT ["java", "org.springframework.boot.loader.launch.JarLauncher"]
+EXPOSE 8080
