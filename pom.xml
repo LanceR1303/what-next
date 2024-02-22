@@ -22,10 +22,24 @@
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
 
+
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<!--
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-mongodb</artifactId>
-		</dependency>
+		</dependency>-->
 		<!--
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -73,6 +87,27 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>com.bonescorp.whatsnext.WhatsNextApplication</mainClass>
+					<layers>
+						<enabled>true</enabled>
+						<includeLayerTools>true</includeLayerTools>
+					</layers>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.flywaydb</groupId>
+				<artifactId>flyway-maven-plugin</artifactId>
+				<version>10.0.0</version>
+				<configuration>
+					<url>jdbc:h2:file:~/db/what_next_db</url>
+					<user>sa</user>
+					<password>password</password>
+					<schemas>
+						<schema>WHATS_NEXT</schema>
+					</schemas>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

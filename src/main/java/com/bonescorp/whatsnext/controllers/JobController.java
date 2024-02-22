@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping(path = "/v1/jobs")
+@RequestMapping(path = "/api/v1/jobs")
 public class JobController {
 
     @Autowired

@@ -1,7 +1,7 @@
 package com.bonescorp.whatsnext.services;
 
 import com.bonescorp.whatsnext.entities.Job;
-import com.bonescorp.whatsnext.repositories.JobRepository;
+import com.bonescorp.whatsnext.repositories.job.JobRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -37,7 +37,7 @@ public class JobServiceTest {
     public void givenNewJob_saveJob() {
         Job jobMock = Job.builder().build();
         jobService.insertJob(jobMock);
-        verify(jobRepository).insert(jobMock);
+        verify(jobRepository).save(jobMock);
     }
 
     @Test
